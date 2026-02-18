@@ -29,13 +29,14 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
+            implementation("io.ktor:ktor-client-okhttp:3.3.0")
         }
         commonMain.dependencies {
             // Navigation
             implementation(libs.navigation.compose)
             // Coil
             implementation(libs.coil.compose)
-            implementation(libs.coil.network.okhttp)
+            implementation(libs.coil.network.ktor3)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
@@ -48,6 +49,10 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+        iosMain.dependencies {
+            // Для iOS используем Darwin движок
+            implementation("io.ktor:ktor-client-darwin:3.3.0")
         }
     }
 }
