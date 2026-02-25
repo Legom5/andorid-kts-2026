@@ -4,5 +4,6 @@
     <string name="password">Пароль</string>
     <string name="enter_password">Введите пароль</string>
     <string name="log_in">Войти</string>
+    <string name="login_error">Неверный логин или пароль</string>
     <string name="comments_count">💬 %1$d комментариев</string>
 </resources>

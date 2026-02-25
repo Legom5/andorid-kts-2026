@@ -2,6 +2,8 @@ package com.legom.andoridkts2026.feature.login.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.legom.andoridkts2026.feature.login.data.LoginRepositoryImpl
+import com.legom.andoridkts2026.feature.login.domain.usecases.LoginUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -10,6 +12,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
+
+    private val repository = LoginRepositoryImpl()
+    private val loginUseCase = LoginUseCase(repository)
 
     private val _state = MutableStateFlow(LoginUiState())
     val state = _state.asStateFlow()
@@ -42,22 +47,28 @@ class LoginViewModel : ViewModel() {
     }
 
     private fun handleLogin(){
+        viewModelScope.launch {
+            val result = loginUseCase(
+                username = _state.value.username,
+                password = _state.value.password
+            )
 
-        val isSuccess = _state.value.username == "admin" && _state.value.password == "123"
-
-        if (isSuccess){
-            viewModelScope.launch {
-                _events.emit(LoginUiEvent.LoginSuccessEvent)
-            }
-        } else {
-            _state.update {
-                it.copy(
-                    username = "",
-                    password = "",
-                    error = true
-                )
-            }
+            result.fold(
+                onSuccess = {
+                    _events.emit(LoginUiEvent.LoginSuccessEvent)
+                },
+                onFailure = {
+                    _state.update {
+                        it.copy(
+                            username = "",
+                            password = "",
+                            error = true
+                        )
+                    }
+                }
+            )
         }
+
     }
 
 }
@@ -81,13 +92,5 @@ data class LoginUiState(
     val error: Boolean = false
 ) {
     val isLoginButtonActive: Boolean
-        get() {
-            return when {
-                username.isBlank() -> false
-                password.isBlank() -> false
-                else -> {
-                    true
-                }
-            }
-        }
+        get() = username.isNotBlank() && password.isNotBlank()
 }

@@ -5,6 +5,7 @@ import andoridkts2026.composeapp.generated.resources.email
 import andoridkts2026.composeapp.generated.resources.enter_email
 import andoridkts2026.composeapp.generated.resources.enter_password
 import andoridkts2026.composeapp.generated.resources.log_in
+import andoridkts2026.composeapp.generated.resources.login_error
 import andoridkts2026.composeapp.generated.resources.password
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -116,7 +117,7 @@ fun LoginScreen(
         if (state.error){
             Text(
                 modifier = Modifier.padding(top = 16.dp),
-                text = "Неверный логин или пароль",
+                text = stringResource(Res.string.login_error),
                 color = MaterialTheme.colorScheme.error,
             )
         }
