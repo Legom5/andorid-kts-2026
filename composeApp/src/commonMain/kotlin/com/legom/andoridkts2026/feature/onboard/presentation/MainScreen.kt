@@ -1,7 +1,8 @@
-package com.legom.andoridkts2026
+package com.legom.andoridkts2026.feature.onboard.presentation
 
 import andoridkts2026.composeapp.generated.resources.Res
 import andoridkts2026.composeapp.generated.resources.compose_multiplatform
+import andoridkts2026.composeapp.generated.resources.log_in
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun MainScreen(
@@ -61,7 +62,7 @@ fun MainScreen(
                 .fillMaxWidth(),
             onClick = onNavigateToLogin
         ){
-            Text("Войти")
+            Text(text = stringResource(Res.string.log_in))
         }
     }
 

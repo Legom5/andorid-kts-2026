@@ -1,5 +1,11 @@
-package com.legom.andoridkts2026
+package com.legom.andoridkts2026.feature.login.presentation
 
+import andoridkts2026.composeapp.generated.resources.Res
+import andoridkts2026.composeapp.generated.resources.email
+import andoridkts2026.composeapp.generated.resources.enter_email
+import andoridkts2026.composeapp.generated.resources.enter_password
+import andoridkts2026.composeapp.generated.resources.log_in
+import andoridkts2026.composeapp.generated.resources.password
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -23,6 +28,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun LoginScreen(
@@ -41,8 +47,8 @@ fun LoginScreen(
         OutlinedTextField(
             value = login,
             onValueChange = { login = it },
-            label = { Text("Email") },
-            placeholder = { Text("Введите email") },
+            label = { Text(text = stringResource(Res.string.email)) },
+            placeholder = { Text(text = stringResource(Res.string.enter_email))  },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp),
@@ -58,8 +64,8 @@ fun LoginScreen(
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Пароль") },
-            placeholder = { Text("Введите пароль") },
+            label = { Text(text = stringResource(Res.string.password)) },
+            placeholder = { Text(text = stringResource(Res.string.enter_password)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 24.dp),
@@ -81,7 +87,7 @@ fun LoginScreen(
                 .height(48.dp),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Войти")
+            Text(text = stringResource(Res.string.log_in))
         }
     }
 }

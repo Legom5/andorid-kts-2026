@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    kotlin("plugin.serialization") version "2.3.0"
 }
 
 kotlin {
@@ -14,6 +15,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
+
     
     listOf(
         iosArm64(),
@@ -29,9 +31,11 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
-            implementation("io.ktor:ktor-client-okhttp:3.3.0")
+            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
+            //Serialization
+            implementation(libs.kotlinx.serialization.json)
             // Navigation
             implementation(libs.navigation.compose)
             // Coil
@@ -52,7 +56,7 @@ kotlin {
         }
         iosMain.dependencies {
             // Для iOS используем Darwin движок
-            implementation("io.ktor:ktor-client-darwin:3.3.0")
+            implementation(libs.ktor.client.darwin)
         }
     }
 }

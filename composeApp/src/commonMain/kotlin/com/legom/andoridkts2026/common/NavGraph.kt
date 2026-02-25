@@ -1,9 +1,12 @@
-package com.legom.andoridkts2026
+package com.legom.andoridkts2026.common
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.legom.andoridkts2026.feature.login.presentation.LoginScreen
+import com.legom.andoridkts2026.feature.onboard.presentation.MainScreen
+import kotlinx.serialization.Serializable
 
 @Composable
 fun NavGraph() {
@@ -12,25 +15,24 @@ fun NavGraph() {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Main.route
-    ){
-        composable(Screen.Main.route){
+        startDestination = Main
+    ) {
+        composable<Main> {
             MainScreen(
                 onNavigateToLogin = {
-                    navController.navigate(Screen.Login.route)
+                    navController.navigate(Login)
                 }
             )
         }
 
-        composable(Screen.Login.route){
+        composable<Login> {
             LoginScreen()
         }
     }
 }
 
-sealed class Screen(val route: String) {
+@Serializable
+object Main
 
-    data object Main : Screen("main")
-
-    data object Login : Screen("login")
-}
+@Serializable
+object Login
