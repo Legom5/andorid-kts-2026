@@ -41,6 +41,13 @@ kotlin {
             // Coil
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor3)
+            //Ktor
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.logging)
+            //Napier
+            implementation(libs.napier)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
