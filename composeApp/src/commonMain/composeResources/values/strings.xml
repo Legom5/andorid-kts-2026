@@ -5,5 +5,12 @@
     <string name="enter_password">Введите пароль</string>
     <string name="log_in">Войти</string>
     <string name="login_error">Неверный логин или пароль</string>
-    <string name="comments_count">💬 %1$d комментариев</string>
+    <string name="search_hint">Поиск курсов...</string>
+    <string name="empty_courses">Не найдено курсов</string>
+    <string name="retry">Повторить</string>
+    <string name="input_search_query">Введите поисковый запрос</string>
+    <string name="kotlin_python_android">Например: kotlin, python, android</string>
+    <string name="change_search_query">Попробуйте изменить поисковый запрос</string>
+    <string name="error_search">Произошла ошибка</string>
+    <string name="load_courses">Загрузка курсов...</string>
 </resources>
