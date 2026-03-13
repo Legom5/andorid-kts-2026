@@ -24,7 +24,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun MainScreen(
+fun OnboardScreen(
     modifier: Modifier = Modifier,
     onNavigateToLogin: () -> Unit
 ){
